@@ -29,7 +29,7 @@ def setup_pgweb():
             logger.info("Created directory %s" % working_dir)
         else:    
             logger.info("Directory %s already exists" % working_dir)
-	return ["pgweb", "--bind=0.0.0.0", "--listen=" + str(port)]
+            return ["pgweb", "--bind=0.0.0.0", "--listen=" + str(port)]
     
     return {
         'command': '_get_pgweb_command',
