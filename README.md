@@ -1,4 +1,8 @@
-# jupyter-pgweb-proxy
+python3 -m build
+
+
+# jupyte
+r-pgweb-proxy
 
 This package was built using the [`jupyter-server-proxy` cookiecutter template](https://github.com/illumidesk/cookiecutter-jupyter-server-proxy).
 
