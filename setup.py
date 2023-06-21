@@ -10,7 +10,7 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setuptools.setup(
     name="jupyter-pgweb-proxy",
-    version="0.0.2",
+    version="1.0.0",
     url="https://github.com/telekoteko/jupyter-pgweb-proxy",
     author="telekoteko",
     description="pgweb",

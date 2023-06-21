@@ -1,25 +1,18 @@
-python3 -m build
+# jupyter-pgweb-proxy
 
-
-# jupyte
-r-pgweb-proxy
-
-This package was built using the [`jupyter-server-proxy` cookiecutter template](https://github.com/illumidesk/cookiecutter-jupyter-server-proxy).
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/telekoteko/jupyter-pgweb-proxy/main?urlpath=pgweb)
+This package was built from the [`illumidesk/cookiecutter-jupyter-server-proxy`](https://github.com/illumidesk/cookiecutter-jupyter-server-proxy) template.
 
 ## Requirements
 
-- [Python 3.6+](https://www.python.org/downloads/)
-- [Jupyter Notebook 6.0+](https://pypi.org/project/notebook/)
-- [JupyterLab 2.1+](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
+- Python 3.6+
+- Jupyter Notebook 6.0+
+- JupyterLab 2.1+
 
-(Optional) For testing:
+This package executes the standard `pgweb` command. This command assumes the `pgweb` command is available in the environment's `PATH`.
 
-- [Docker](https://docs.docker.com/get-docker/)
-- [docker-compose](https://docs.docker.com/compose/install/)
+## What?
 
-This package executes the standard `pgweb` command. This command assumes the `pgweb` command is available in the environment's `PATH`. For convenience, the tests include cases that assert outputs when running the `pgweb` command from a docker container. If you don't need to run tests with this setup running in a docker container, then remove the `tests/test_pgweb_docker.py` file or comment out the code in the file.
+Check it out, [it's pretty sweet](https://github.com/sosedoff/pgweb).
 
 ## Quick Starts
 
@@ -28,6 +21,38 @@ This package executes the standard `pgweb` command. This command assumes the `pg
 This test requires you to have a database instance available as a public endpoint or installed within the notebook container itself.
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/illumidesk/jupyter-pgweb-proxy/main?urlpath=pgweb)
+
+### Run locally with `docker-compose`
+
+```bash
+make dev
+```
+
+1. Open your browser: http://localhost:8889
+1. Click the `pgweb` item from the `New` dropdown in `Jupyter Classic` or click on the green `pgweb` icon in the Notebooks section in `Jupyter Lab`.
+1. Connect with the `Scheme` or `Standard` option.
+
+For example, with the `Scheme` option the string would look like so:
+
+```bash
+postgres://postgres:postgres@testdb:5432/postgres?sslmode=disable
+```
+
+### Cleanup
+
+Stop services:
+
+```bash
+make dev-down
+```
+
+Remove images and running containers:
+
+> **NOTE**: this will stop all running containers on the local, including those with the exit status.
+
+```bash
+make clean-all
+```
 
 ## The Hard Way
 
@@ -41,7 +66,7 @@ source venv/bin/activate
 ### Install jupyter-pgweb-proxy
 
 ```bash
-pip install git+https://github.com/telekoteko/jupyter-pgweb-proxy.git
+pip install git+https://github.com/illumidesk/jupyter-pgweb-proxy.git
 ```
 
 ### Enable jupyter-pgweb-proxy Extensions
@@ -62,6 +87,8 @@ jupyter lab build
 3. Start Jupyter Classic or Jupyter Lab
 
 4. Click on the `pgweb` icon from the Jupyter Lab Launcher or the `pgweb` item from the `New` dropdown in Jupyter Classic.
+
+5. Connect to your database as instructed in the [Quickstart](#quickstart) section.
 
 ## Credits
 

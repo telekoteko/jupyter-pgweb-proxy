@@ -26,9 +26,17 @@ help:
 
 build: ## build the latest image for a stack
 	${VENV_BIN}/jupyter-repo2docker --no-run --user-id 1000 --user-name jovyan --image-name $(OWNER)/pgweb:$(TAG) .
+	@echo -n "Built image size: "
+	@docker images $(OWNER)/pgweb:$(TAG) --format "{{.Size}}"
 
 clean-all: ## remove built images and running containers (including those w/ exit status)
 	@docker rm -f $(shell docker ps -aq)
+
+dev: venv ## run one of the containers (stacks) on port 8889
+	docker-compose -f docker-compose.yaml up -d --build
+
+dev-down:venv ## stop (down) the docker-compose services
+	docker-compose -f docker-compose.yaml down
 
 lint: venv ## lint the dockerfile(s)
 	@echo "Linting Dockerfiles with Hadolint in ..."
