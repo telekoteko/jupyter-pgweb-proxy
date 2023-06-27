@@ -1,3 +1,5 @@
+Parar gerar o release: python3 -m build
+
 # jupyter-pgweb-proxy
 
 This package was built from the [`illumidesk/cookiecutter-jupyter-server-proxy`](https://github.com/illumidesk/cookiecutter-jupyter-server-proxy) template.
